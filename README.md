@@ -1,6 +1,6 @@
 # Real-Time Group Chat Application
 
-This project is a real-time group chat application using React, Firebase, and Socket.IO for real-time communication. Users can authenticate with Google, create rooms, and send messages in real time.
+This project is a real-time group chat application using React, Firebase for store data and real-time communication. Users can authenticate with Google, create rooms, and send messages in real time.
 
 ## Features
 
