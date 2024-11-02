@@ -1,6 +1,8 @@
 // App.jsx
 import { signOut } from "firebase/auth"; // Firebase sign-out function
 import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { auth } from '../firebase-config'; // Firebase authentication configuration
 import Auth from "./componets/Auth"; // Authentication component
 import JoinRoom from "./componets/JoinRoom/JoinRoom"; // Chat room component
@@ -18,10 +20,13 @@ function App() {
             // User is signed in, update states
             setIsAuthenticated(true);
             setUid(user.uid);
+         toast.success('Logged In successfully')
+
          } else {
             // User is signed out, reset states
             setIsAuthenticated(false);
             setUid(null);
+
          }
       });
       
@@ -34,6 +39,7 @@ function App() {
       try {
          await signOut(auth); // Sign out the user
          console.log("User logged out successfully");
+         toast.warning('Logged out successfully')
          setIsAuthenticated(false); // Update state to reflect logged-out status
          setUid(null); // Clear the stored user ID
       } catch (error) {
@@ -43,6 +49,7 @@ function App() {
 
    return (
       <div>
+         <ToastContainer></ToastContainer>
          {isAuthenticated ? (
             // If authenticated, show chat room component
             <JoinRoom uid={uid} logout={logout} />

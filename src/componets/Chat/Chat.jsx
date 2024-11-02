@@ -44,6 +44,7 @@ export default function Chat({ roomID, uid, logout }) {
         if (newMessage === '') return; // Do not send empty messages
 
         try {
+
             // Add a new message document to the Firestore database
             await addDoc(collection(database, 'messages'), {
                 room: roomID,
@@ -54,10 +55,13 @@ export default function Chat({ roomID, uid, logout }) {
                 photoURL: auth.currentUser.photoURL, // User's profile picture URL
                 uid: auth.currentUser.uid, // User's unique ID
             });
+            
         } catch (error) {
             console.log('Error sending message: ' + error); // Log any errors
+        }finally{
+            setNewMessage('')
         }
-        setNewMessage(''); // Clear the message input after sending
+        ; // Clear the message input after sending
     };
 
     const email = auth.currentUser.email; // Get the current user's email
