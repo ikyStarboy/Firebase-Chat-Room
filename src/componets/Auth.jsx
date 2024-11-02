@@ -1,30 +1,26 @@
 // Auth.jsx
-import { browserLocalPersistence, setPersistence, signInWithPopup } from 'firebase/auth';
-import Cookies from 'universal-cookie';
-import { auth, provider } from '../../firebase-config';
+import { browserLocalPersistence, setPersistence, signInWithPopup } from 'firebase/auth'; // Firebase authentication methods
+import { auth, provider } from '../../firebase-config'; // Firebase configuration and provider setup
 
-const cookies = new Cookies();
-
-export default function Auth({ setAuth, setUid, setAT }) {
+export default function Auth({ setAuth }) {
+   // Function to handle user login
    const handleLogin = async () => {
       try {
-         // Set persistence to LOCAL (session remains after page reloads)
-         await setPersistence(auth, browserLocalPersistence);
+         // Set session persistence to keep the user logged in after page reloads
+       await setPersistence(auth, browserLocalPersistence);
 
-         // Initiate Google sign-in
+         // Start Google sign-in popup
          const result = await signInWithPopup(auth, provider);
 
-
-         // Update state in the parent component through props
+         // Update authentication state in the parent component
          if (result.user) {
-            setAuth(true);
-            
+            setAuth(true); // User is logged in
          } else {
-            setAuth(false);
+            setAuth(false); // User is not logged in
             console.log('User not found');
          }
       } catch (error) {
-         console.error("Error during login:", error);
+         console.error("Error during login:", error); // Handle and log any login errors
       }
    };
 
@@ -32,6 +28,7 @@ export default function Auth({ setAuth, setUid, setAT }) {
       <div className="text-center h-screen flex items-center justify-center">
          <div>
             <p>Please add your account to continue</p>
+            {/* Button to initiate Google login */}
             <button className="bg-blue-700 text-white px-3 py-1" onClick={handleLogin}>
                Join With Google
             </button>
