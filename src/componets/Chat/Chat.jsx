@@ -71,7 +71,8 @@ export default function Chat({ roomID, uid, logout }) {
             <div className="divider lg:w-2/5 w-full mx-auto">{email}</div>
             <div className="lg:w-2/5 w-full relative bg-gray-50 border p-4 rounded-lg mx-auto py-5 lg:h-3/5 overflow-y-scroll">
                 {/* Scrollable chat message container */}
-                {messages.map(msg => (
+                
+                {messages.length!==0? messages.map(msg => (
                     <div key={msg.id}> {/* Unique key for each message */}
                         <div className={msg.uid === uid ? 'chat chat-end' : 'chat chat-start'}>
                             <div className="chat-image avatar">
@@ -89,7 +90,11 @@ export default function Chat({ roomID, uid, logout }) {
                             <div className="chat-bubble">{msg.chat}</div> {/* Display message content */}
                         </div>
                     </div>
-                ))}
+                )):<div className='text-center border p-3 bg-green-100'>
+                    <h1>This room has no messages; you can join any of your friends without any limits by using the room name ( <span className='font-bold text-yellow-600'>{roomID}</span> ) you created. <br />
+                       
+                    </h1>
+                    </div>}
                 <div ref={messagesEndRef} /> {/* Empty div to act as scroll target */}
             </div>
             <div className='text-center p-2 bg-gray-300 lg:w-2/5 w-full mx-auto'>
