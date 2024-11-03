@@ -52,7 +52,7 @@ This project is a real-time group chat application using React, Firebase for sto
 
 ## Live URL
 
-https://firebase-chat-room-nine.vercel.app
+https://chat-others.vercel.app
 
 ## License
 
