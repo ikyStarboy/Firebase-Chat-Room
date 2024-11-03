@@ -15,10 +15,13 @@ export default function Join({setRoomID,logout}) {
         <div className=''>
         <h1 className='text-2xl'>Hello! {name}</h1>
         <div className="divider">{email}</div>
-        <h1 className='text-lg font-semibold'>Enter Room Name</h1>
-        <input ref={getRoomID} className="input input-md my-2 input-bordered w-full" type="text" /> <br />
-        <button className='btn m-1 bg-red-500 btn-md text-white' onClick={logout} >Logout</button>
-        <button className="btn bg-green-500 hover:bg-green-600 text-white btn-md" onClick={hanldeRoomBtn}>Join Room</button>
+       
+        <input ref={getRoomID} placeholder='Type room name...' className="input input-md my-2 input-bordered w-full" type="text" /> <br />
+       <div className='flex items-center justify-center gap-1 mt-2'>
+       <button className='btn hover:bg-red-700 bg-red-500 btn-md text-white' onClick={logout} ><svg fill="none" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><g stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m7.02331 5.5c-2.42505 1.61238-4.02331 4.36954-4.02331 7.5 0 4.9706 4.02944 9 9 9 4.9706 0 9-4.0294 9-9 0-3.13046-1.5983-5.88762-4.0233-7.5"/><path d="m12 2v8"/></g></svg> Logout</button>
+
+       <button className="btn bg-green-500 hover:bg-green-600 text-white btn-md" onClick={hanldeRoomBtn}>Join Room <svg fill="none" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><g stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m8 12h8"/><path d="m12 16v-8"/><path d="m9 22h6c5 0 7-2 7-7v-6c0-5-2-7-7-7h-6c-5 0-7 2-7 7v6c0 5 2 7 7 7z"/></g></svg></button>
+       </div>
         </div>
     </div>
     
